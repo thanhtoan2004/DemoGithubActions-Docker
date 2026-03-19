@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Spring Boot Docker Demo
 
 Dự án mẫu Spring Boot chạy với Docker, tuân thủ các Best Practices.
@@ -53,3 +54,6 @@ Nếu bạn đã cài đặt JDK 21 và Maven:
 - `Dockerfile`: Cấu hình build image tối ưu.
 - `docker-compose.yml`: Cấu hình chạy cụm dịch vụ.
 - `.dockerignore`: Các file không cần thiết khi build Docker.
+=======
+# DemoGithubActions-Docker
+>>>>>>> c375e6c353419e163d490943a5af6353059d33b4
