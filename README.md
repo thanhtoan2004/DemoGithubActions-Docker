@@ -49,6 +49,7 @@ Nếu bạn đã cài đặt JDK 21 và Maven:
 ./mvnw spring-boot:run
 ```
 
+
 ## Cấu trúc dự án
 - `src/main/java/com/example/demo/HelloController.java`: Controller đơn giản.
 - `Dockerfile`: Cấu hình build image tối ưu.
@@ -56,4 +57,3 @@ Nếu bạn đã cài đặt JDK 21 và Maven:
 - `.dockerignore`: Các file không cần thiết khi build Docker.
 =======
 # DemoGithubActions-Docker
->>>>>>> c375e6c353419e163d490943a5af6353059d33b4
