@@ -1,0 +1,12 @@
+.git
+.mvn
+target
+mvnw
+mvnw.cmd
+.gitignore
+.gitattributes
+Dockerfile
+docker-compose.yml
+HELP.md
+demo.zip
+*.log

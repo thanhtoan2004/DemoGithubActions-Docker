@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Thanh Toan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --bg: #0f172a;
+            --text: #f8fafc;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .auth-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-auth {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-logout { background: #f43f5e; }
+
+        p {
+            line-height: 1.6;
+            color: #94a3b8;
+        }
+
+        .badge {
+            background: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .db-status {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #10b981;
+        }
+
+        .animation-dot {
+            height: 10px;
+            width: 10px;
+            background-color: #10b981;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            70% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hello, I'm Thanh Toan 🚀</h1>
+        <p>I'm a Java developer specializing in Spring Boot and Docker. This project now includes <strong>Authentication & Database integration</strong>.</p>
+        <div class="badge" th:text="${status}">Status Loading...</div>
+        
+        <div class="auth-box">
+            <div sec:authorize="!isAuthenticated()">
+                <p>Authentication is ready. Register to test database storage!</p>
+                <a href="/login" class="btn-auth">Sign In</a>
+                <a href="/register" class="btn-auth">Register</a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <p>Welcome back, <strong th:text="${#authentication.name}">User</strong>!</p>
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" class="btn-auth btn-logout">Logout</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="db-status">
+            <span class="animation-dot"></span>
+            Database status: <strong th:text="${dbConnected}">No</strong>
+        </div>
+    </div>
+</body>
+</html>
